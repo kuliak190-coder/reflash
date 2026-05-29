@@ -1,0 +1,247 @@
+:root {
+  --neon-green: #00ff66;
+  --neon-soft: #0f0;
+  --dark-bg: #050505;
+  --panel-bg: rgba(0, 18, 6, 0.62);
+  --border-glow: 0 0 10px rgba(0, 255, 102, 0.45);
+  --text-glow: 0 0 8px rgba(0, 255, 102, 0.85);
+
+  --sans: "Rajdhani", sans-serif;
+  --mono: "Share Tech Mono", ui-monospace, Consolas, monospace;
+
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--neon-green);
+  font-family: var(--mono);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* Matrix rain canvas — fixed full-screen behind everything */
+.matrix-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+
+/* Subtle dark gradient over the rain so text stays legible */
+.bg-veil {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 80% at 50% 0%,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(5, 5, 5, 0.78) 55%,
+    rgba(5, 5, 5, 0.92) 100%
+  );
+}
+
+/* CRT scanlines overlay */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  background-size: 100% 4px, 3px 100%;
+  opacity: 0.6;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--neon-green);
+  text-shadow: var(--text-glow);
+}
+
+.section-eyebrow {
+  font-family: var(--mono);
+  text-transform: none;
+  color: #cfe;
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+p {
+  color: #cfe9d8;
+}
+
+.highlight {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Glassmorphism panel */
+.panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border: 1px solid rgba(0, 255, 102, 0.28);
+  box-shadow: var(--border-glow);
+  padding: clamp(22px, 4vw, 38px);
+  border-radius: 6px;
+}
+
+/* Neon bullet lists */
+ul.neon-list {
+  list-style: none;
+}
+
+ul.neon-list li {
+  margin-bottom: 14px;
+  position: relative;
+  padding-left: 26px;
+  color: #cfe9d8;
+}
+
+ul.neon-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--neon-green);
+  text-shadow: var(--text-glow);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--neon-green);
+  font-family: var(--mono);
+  font-size: 1rem;
+  padding: 14px 32px;
+  border: 2px solid var(--neon-green);
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: var(--border-glow);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--neon-green);
+  color: #000;
+  box-shadow: 0 0 28px var(--neon-green);
+}
+
+.btn--ghost {
+  box-shadow: none;
+  border-color: rgba(0, 255, 102, 0.45);
+}
+
+.btn--ghost:hover {
+  background: rgba(0, 255, 102, 0.12);
+  color: var(--neon-green);
+  box-shadow: var(--border-glow);
+}
+
+/* Glitch title effect */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff003c;
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 #00e5ff;
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip-path: inset(20% 0 60% 0); }
+  20% { clip-path: inset(70% 0 8% 0); }
+  40% { clip-path: inset(4% 0 55% 0); }
+  60% { clip-path: inset(85% 0 5% 0); }
+  80% { clip-path: inset(22% 0 35% 0); }
+  100% { clip-path: inset(50% 0 30% 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(65% 0 10% 0); }
+  20% { clip-path: inset(3% 0 60% 0); }
+  40% { clip-path: inset(80% 0 12% 0); }
+  60% { clip-path: inset(25% 0 50% 0); }
+  80% { clip-path: inset(95% 0 2% 0); }
+  100% { clip-path: inset(10% 0 60% 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .glitch::before,
+  .glitch::after { animation: none; }
+}

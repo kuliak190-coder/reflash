@@ -1,0 +1,21 @@
+.block {
+  padding: 56px 0;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: #e7fff1;
+  margin-bottom: 18px;
+}
+
+.text {
+  margin-bottom: 14px;
+}
+
+.text:last-child {
+  margin-bottom: 0;
+}
+
+.center {
+  text-align: center;
+}

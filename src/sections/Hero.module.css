@@ -1,0 +1,150 @@
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0 60px;
+  overflow: hidden;
+}
+
+/* Stage holds the giant title (behind) and the figure (in front) */
+.stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Wrapper owns the centering so Motion's inline transform on the
+   <h1> (from the scale animation) can't clobber it. */
+.titleWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-5%);
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+/* Giant title sits behind the figure, centered, full-bleed */
+.bigTitle {
+  margin: 0;
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f4fff8;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 11vw, 11rem);
+  line-height: 0.82;
+  white-space: nowrap;
+  text-shadow:
+    0 0 28px rgba(0, 255, 102, 0.55),
+    0 0 60px rgba(0, 255, 102, 0.25);
+  pointer-events: none;
+}
+
+/* The hero figure (main.png) layered in front of the title */
+.figure {
+  position: relative;
+  z-index: 2;
+  max-height: 92vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 45px rgba(0, 255, 102, 0.28));
+}
+
+/* Captions stacked and centered under the figure */
+.captions {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  margin-top: -40px;
+}
+
+.captionLeft {
+  max-width: 320px;
+}
+
+.captionRight {
+  max-width: 340px;
+  text-align: center;
+}
+
+.typing {
+  font-family: var(--mono);
+  color: var(--neon-green);
+  text-shadow: var(--text-glow);
+  font-size: clamp(0.9rem, 1.6vw, 1.15rem);
+  border-right: 2px solid var(--neon-green);
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.subtitle {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.meta {
+  font-family: var(--mono);
+  color: #cfe9d8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.meta .accent {
+  color: var(--neon-green);
+}
+
+.actions {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .bigTitle {
+    font-size: clamp(1.5rem, 11vw, 7rem);
+  }
+  /* The image has wide empty side margins; scale it past the
+     container so the figure reads big — the Hero clips the overflow. */
+  .figure {
+    width: 150%;
+    max-width: 150%;
+  }
+  .captions {
+    justify-content: center;
+    text-align: center;
+    margin-top: 4px;
+  }
+  .captionRight {
+    text-align: center;
+  }
+  .typing {
+    white-space: normal;
+    border-right: none;
+  }
+}
