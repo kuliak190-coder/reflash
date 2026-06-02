@@ -9,6 +9,7 @@ const ITEMS = [
   "Угощения и шампанское",
   "Фото и видеоконтент от Ани Горган",
   "Сюрпризы и подарки от Tiffany",
+  "Музыкальный сет от Dj Андрей crash",
 ];
 
 export default function Program() {
