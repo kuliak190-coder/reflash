@@ -20,7 +20,7 @@ export default function Program() {
         <div className="panel">
           <h2 className="section-title">// ПРОГРАММА СИСТЕМЫ (ВАС ЖДЁТ)</h2>
           <p className={s.lead}>
-<div class="event-program">
+<div className="event-program">
     
    <section className="event-program-section" style={{ padding: '40px 0', maxWidth: '800px', margin: '0 auto', fontFamily: 'inherit' }}>
     
