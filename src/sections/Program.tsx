@@ -2,10 +2,6 @@ import { motion } from "motion/react";
 import Section from "../components/Section";
 import s from "./sections.module.css";
 
-const ITEMS = [
-
-];
-
 export default function Program() {
   return (
     <Section id="program" className={s.block}>
