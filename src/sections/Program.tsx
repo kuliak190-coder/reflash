@@ -1,99 +1,104 @@
-import { motion } from "framer-motion";
 import Section from "../components/Section";
-import s from "./sections.module.css";
+import sec from "./sections.module.css";
+import s from "./Program.module.css";
+
+type ProgramItem = {
+  time: string;
+  title: string;
+  paragraphs?: string[];
+  lead?: string;
+  bullets?: string[];
+};
+
+const PROGRAM: ProgramItem[] = [
+  {
+    time: "12:00",
+    title: "Сбор гостей и приветственный фуршет",
+    paragraphs: [
+      "Регистрация участников, знакомство, общение.",
+      "Для гостей будут подготовлены легкие угощения, шампанское, кофе и чай.",
+      "Музыкальное сопровождение мероприятия — DJ-сет.",
+      "В течение всего мероприятия будут работать контент-фотографы Аня Горган и Mari, которые будут создавать фото- и видеоконтент встречи.",
+    ],
+  },
+  {
+    time: "13:00",
+    title: "Лекция «Женщина-предприниматель в эпоху перемен»",
+    lead: "В программе лекции:",
+    bullets: [
+      "почему нестабильность стала новой реальностью;",
+      "что помогает одним женщинам расти в период перемен, а других останавливает;",
+      "как сохранять устойчивость;",
+      "что будет определять успех в ближайшие годы;",
+      "где находятся новые возможности для роста;",
+      "как принимать решения быстрее и эффективнее;",
+      "практические инструменты продаж в условиях высокой конкуренции.",
+    ],
+  },
+  {
+    time: "14:30",
+    title: "Специальный мастер-класс от магазина косметики @tiffany_md",
+    paragraphs: [
+      "Интерактивный формат, подготовленный специально для участниц мероприятия.",
+      "Подробности будут раскрыты во время встречи.",
+    ],
+  },
+  {
+    time: "15:00",
+    title: "Розыгрыш подарков",
+    paragraphs: [
+      "Для участниц подготовлены специальные подарки и приятные сюрпризы от магазина косметики @tiffany_md.",
+    ],
+  },
+  {
+    time: "15:15",
+    title: "Нетворкинг и свободное общение",
+    bullets: [
+      "ответы на вопросы;",
+      "знакомство с участницами;",
+      "обмен контактами;",
+      "фотографии на память;",
+      "свободное общение за чашкой кофе.",
+    ],
+  },
+];
 
 export default function Program() {
-    return (
-        <div className="event-program">
-            <section className="event-program-section" style={{ padding: '40px 0', maxWidth: '800px', margin: '0 auto', fontFamily: 'inherit' }}>
-                
-                <h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '40px', textTransform: 'uppercase' }}>
-                    Программа мероприятия
-                </h2>
+  return (
+    <Section id="program" className={sec.block}>
+      <div className="container">
+        <h2 className="section-title">// ПРОГРАММА МЕРОПРИЯТИЯ</h2>
+        <p className="section-eyebrow">&gt; РАСПИСАНИЕ ЗАГРУЖЕНО_</p>
 
-                <div className="timeline" style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+        <div className={s.timeline}>
+          {PROGRAM.map((item) => (
+            <div key={item.time} className={s.item}>
+              <div className={s.time}>{item.time}</div>
+              <div className={s.card}>
+                <h3 className={s.title}>{item.title}</h3>
 
-                    {/* 12:00 */}
-                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
-                            12:00
-                        </div>
-                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
-                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Сбор гостей и приветственный фуршет</h3>
-                            <p style={{ marginBottom: '10px' }}>Регистрация участников, знакомство, общение.</p>
-                            <p style={{ marginBottom: '10px' }}>Для гостей будут подготовлены легкие угощения, шампанское, кофе и чай.</p>
-                            <p style={{ marginBottom: '10px' }}>Музыкальное сопровождение мероприятия — DJ-сет.</p>
-                            <p style={{ marginBottom: 0 }}>В течение всего мероприятия будут работать контент-фотографы Аня Горган и Mari, которые будут создавать фото- и видеоконтент встречи.</p>
-                        </div>
-                    </div>
+                {item.lead && <p className={s.text}>{item.lead}</p>}
 
-                    {/* 13:00 */}
-                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
-                            13:00
-                        </div>
-                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
-                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Лекция «Женщина-предприниматель в эпоху перемен»</h3>
-                            <p style={{ marginBottom: '10px' }}>В программе лекции:</p>
-                            <ul style={{ marginBottom: 0, paddingLeft: '20px', lineHeight: 1.6 }}>
-                                <li>почему нестабильность стала новой реальностью;</li>
-                                <li>что помогает одним женщинам расти в период перемен, а других останавливает;</li>
-                                <li>как сохранять устойчивость;</li>
-                                <li>что будет определять успех в ближайшие годы;</li>
-                                <li>где находятся новые возможности для роста;</li>
-                                <li>как принимать решения быстрее и эффективнее;</li>
-                                <li>практические инструменты продаж в условиях высокой конкуренции.</li>
-                            </ul>
-                        </div>
-                    </div>
+                {item.paragraphs?.map((p, i) => (
+                  <p key={i} className={s.text}>
+                    {p}
+                  </p>
+                ))}
 
-                    {/* 14:30 */}
-                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
-                            14:30
-                        </div>
-                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
-                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Специальный мастер-класс от магазина косметики @tiffany_md</h3>
-                            <p style={{ marginBottom: '10px' }}>Интерактивный формат, подготовленный специально для участниц мероприятия.</p>
-                            <p style={{ marginBottom: 0 }}>Подробности будут раскрыты во время встречи.</p>
-                        </div>
-                    </div>
-
-                    {/* 15:00 */}
-                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
-                            15:00
-                        </div>
-                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
-                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Розыгрыш подарков</h3>
-                            <p style={{ marginBottom: 0 }}>Для участниц подготовлены специальные подарки и приятные сюрпризы от магазина косметики @tiffany_md.</p>
-                        </div>
-                    </div>
-
-                    {/* 15:15 */}
-                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
-                            15:15
-                        </div>
-                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
-                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Нетворкинг и свободное общение</h3>
-                            <ul style={{ marginBottom: 0, paddingLeft: '20px', lineHeight: 1.6 }}>
-                                <li>ответы на вопросы;</li>
-                                <li>знакомство с участницами;</li>
-                                <li>обмен контактами;</li>
-                                <li>фотографии на память;</li>
-                                <li>свободное общение за чашкой кофе.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div style={{ textAlign: 'center', marginTop: '40px', fontSize: '1.2rem', fontWeight: 700, opacity: 0.8 }}>
-                    Завершение мероприятия
-                </div>
-
-            </section>
+                {item.bullets && (
+                  <ul className={s.list}>
+                    {item.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-    );
+
+        <div className={s.outro}>Завершение мероприятия</div>
+      </div>
+    </Section>
+  );
 }
