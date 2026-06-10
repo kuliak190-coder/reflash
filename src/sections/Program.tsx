@@ -22,7 +22,7 @@ export default function Program() {
           <p className={s.lead}>
 <div class="event-program">
     
-    <section className="event-program-section" style={{ padding: '40px 0', maxWidth: '800px', margin: '0 auto', fontFamily: 'inherit' }}>
+   <section className="event-program-section" style={{ padding: '40px 0', maxWidth: '800px', margin: '0 auto', fontFamily: 'inherit' }}>
     
     <h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '40px', textTransform: 'uppercase' }}>
         Программа мероприятия
@@ -106,7 +106,7 @@ export default function Program() {
 
     </div>
 
-    <div style={{ textAlign: 'center', marginTop: '40px', fontSize: '1.2rem', fontWeight: 'bold', opacity: 0.8 }}>
+    <div style={{ textAlign: 'center', marginTop: '40px', fontSize: '1.2rem', fontWeight: 700, opacity: 0.8 }}>
         Завершение мероприятия
     </div>
 
