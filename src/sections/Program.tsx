@@ -1,66 +1,99 @@
 import { motion } from "framer-motion";
 import Section from "../components/Section";
-
-interface ProgramItem {
-  time: string;
-  title: string;
-  desc: string;
-}
-
-const ITEMS: ProgramItem[] = [
-  {
-    time: "12:00",
-    title: "СБОР ГОСТЕЙ И ПРИВЕТСТВЕННЫЙ ФУРШЕТ",
-    desc: "Регистрация участников, знакомство, общение.",
-    desc: "Для гостей будут подготовлены легкие угощения, шампанское, кофе и чай.",
-    desc: "Музыкальное сопровождение мероприятия — DJ-сет.",
-  },
-  {
-    time: "13:00",
-    title: "ОТКРЫТИЕ. ВВОДНАЯ СЕССИЯ",
-    desc: "Инна Мушинская. Зачем мы здесь и что будет происходить.",
-  },
-  {
-    time: "14:00",
-    title: "ОСНОВНАЯ ПРАКТИКА",
-    desc: "Работа с ограничивающими убеждениями. Перепрошивка внутренних программ.",
-  },
-  {
-    time: "15:00",
-    title: "РОЗЫГРЫШ ПОДАРКОВ",
-    desc: "Для участниц подготовлены специальные подарки и приятные сюрпризы от партнёров мероприятия.",
-  },
-  {
-    time: "15:15",
-    title: "НЕТВОРКИНГ И СВОБОДНОЕ ОБЩЕНИЕ",
-    desc: "Ответы на вопросы, знакомство с участницами, обмен контактами, фотографии на память.",
-  },
-];
+import s from "./sections.module.css";
 
 export default function Program() {
-  return (
-    <Section id="program">
-      <div className="panel">
-        <p className="lead_wix1c_5">// ПРОГРАММА СИСТЕМЫ</p>
-        <h2 className="section-title">ПРОГРАММА<br />МЕРОПРИЯТИЯ</h2>
-        <ul className="neon-list">
-          {ITEMS.map((item, i) => (
-            <motion.li
-              key={item.time}
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-            >
-              <span className="time">{item.time}</span>
-              <div className="event-content">
-                <div className="event-title">{item.title}</div>
-                <p className="event-desc">{item.desc}</p>
-              </div>
-            </motion.li>
-          ))}
-        </ul>
-      </div>
-    </Section>
-  );
+    return (
+        <div className="event-program">
+            <section className="event-program-section" style={{ padding: '40px 0', maxWidth: '800px', margin: '0 auto', fontFamily: 'inherit' }}>
+                
+                <h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '40px', textTransform: 'uppercase' }}>
+                    Программа мероприятия
+                </h2>
+
+                <div className="timeline" style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+
+                    {/* 12:00 */}
+                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
+                            12:00
+                        </div>
+                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
+                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Сбор гостей и приветственный фуршет</h3>
+                            <p style={{ marginBottom: '10px' }}>Регистрация участников, знакомство, общение.</p>
+                            <p style={{ marginBottom: '10px' }}>Для гостей будут подготовлены легкие угощения, шампанское, кофе и чай.</p>
+                            <p style={{ marginBottom: '10px' }}>Музыкальное сопровождение мероприятия — DJ-сет.</p>
+                            <p style={{ marginBottom: 0 }}>В течение всего мероприятия будут работать контент-фотографы Аня Горган и Mari, которые будут создавать фото- и видеоконтент встречи.</p>
+                        </div>
+                    </div>
+
+                    {/* 13:00 */}
+                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
+                            13:00
+                        </div>
+                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
+                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Лекция «Женщина-предприниматель в эпоху перемен»</h3>
+                            <p style={{ marginBottom: '10px' }}>В программе лекции:</p>
+                            <ul style={{ marginBottom: 0, paddingLeft: '20px', lineHeight: 1.6 }}>
+                                <li>почему нестабильность стала новой реальностью;</li>
+                                <li>что помогает одним женщинам расти в период перемен, а других останавливает;</li>
+                                <li>как сохранять устойчивость;</li>
+                                <li>что будет определять успех в ближайшие годы;</li>
+                                <li>где находятся новые возможности для роста;</li>
+                                <li>как принимать решения быстрее и эффективнее;</li>
+                                <li>практические инструменты продаж в условиях высокой конкуренции.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* 14:30 */}
+                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
+                            14:30
+                        </div>
+                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
+                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Специальный мастер-класс от магазина косметики @tiffany_md</h3>
+                            <p style={{ marginBottom: '10px' }}>Интерактивный формат, подготовленный специально для участниц мероприятия.</p>
+                            <p style={{ marginBottom: 0 }}>Подробности будут раскрыты во время встречи.</p>
+                        </div>
+                    </div>
+
+                    {/* 15:00 */}
+                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
+                            15:00
+                        </div>
+                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
+                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Розыгрыш подарков</h3>
+                            <p style={{ marginBottom: 0 }}>Для участниц подготовлены специальные подарки и приятные сюрпризы от магазина косметики @tiffany_md.</p>
+                        </div>
+                    </div>
+
+                    {/* 15:15 */}
+                    <div className="timeline-item" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                        <div className="time" style={{ fontWeight: 700, fontSize: '1.5rem', minWidth: '80px', paddingTop: '3px' }}>
+                            15:15
+                        </div>
+                        <div className="content" style={{ flex: 1, padding: '20px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
+                            <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '1.3rem' }}>Нетворкинг и свободное общение</h3>
+                            <ul style={{ marginBottom: 0, paddingLeft: '20px', lineHeight: 1.6 }}>
+                                <li>ответы на вопросы;</li>
+                                <li>знакомство с участницами;</li>
+                                <li>обмен контактами;</li>
+                                <li>фотографии на память;</li>
+                                <li>свободное общение за чашкой кофе.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style={{ textAlign: 'center', marginTop: '40px', fontSize: '1.2rem', fontWeight: 700, opacity: 0.8 }}>
+                    Завершение мероприятия
+                </div>
+
+            </section>
+        </div>
+    );
 }
